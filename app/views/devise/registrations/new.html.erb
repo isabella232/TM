@@ -1,31 +1,38 @@
-<div class="jumbotron">Sign up</h2>
-<div class="container">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container-fluid h-100 w-100" id="sign_up_bg">
+  <div class="row mx-auto py-5">
+    <div class="card mx-auto">
+      <div class="card-header text-center"><strong>Join the movement</strong></div>
+        <div class="card-body align-middle">
+          <div class="col-sm">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+              
+              <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "example@email.com", class: "w-100" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="form-group">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", placeholder:"super secret password", class: "w-100" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"super secret password", class: "w-100" %>
+              </div>
+
+              <div type="action">
+                <%= f.submit "Sign up", class: "btn btn-success" %>
+              </div><br />
+            <% end %>
+              <div class="#{partial_render_class}">
+                <%= render partial:"devise/shared/links", locals:{partial_render_class:'btn btn-info'}%>
+              </div>
+          </div>
+        </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
 </div>

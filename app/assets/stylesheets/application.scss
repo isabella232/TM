@@ -13,5 +13,13 @@
  *= require_tree .
  *= require_self
  */
+html,body{
+    height:100%;
+}
+
+#sign_up_bg{
+    background-image: url("paper.gif");
+}
+
 
  @import "bootstrap";
